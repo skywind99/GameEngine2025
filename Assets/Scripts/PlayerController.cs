@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed = 3;
 	Animator anim;
+	BulletGenerator bullet;
 	// Start is called before the first frame update
 	void Start()
 	{
+		bullet = GetComponent<BulletGenerator>();
 		anim = GetComponent<Animator>();
 	}
 
@@ -25,6 +27,12 @@ public class PlayerController : MonoBehaviour
 			anim.SetInteger("Input", (int)h);
 		}
 
+		if (Input.GetKeyDown(KeyCode.Space)){
+			bullet.startFire();
+		}
+		else if (Input.GetKeyUp(KeyCode.Space)){
+			bullet.stopFire();
+		}
 	}
 	private void LateUpdate()
 	{
