@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class GameDirector : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
+		if (hpGauge.GetComponent<Slider>().value <= 0)
+		{
+			SceneManager.LoadScene("EndScene");
+			PlayerPrefs.SetInt("Score",tempScore);
+		}
 	}
 	public void DecreaseHP()
 	{
