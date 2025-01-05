@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552c43d998c80604ebeb4e8f16708119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDirector: {fileID: 0}
+  explosionPrefab: {fileID: 5149981773841067418, guid: 9fbd69aaf0880d04da127deb2cf0a8db, type: 3}
 --- !u!58 &7697068120323979624
 CircleCollider2D:
   m_ObjectHideFlags: 0

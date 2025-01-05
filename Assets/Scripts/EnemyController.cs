@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+	[SerializeField]
+	private GameObject gameDirector;
+	[SerializeField]
+	private GameObject explosionPrefab;
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		gameDirector = GameObject.Find("GameDirector");
 	}
 
 	// Update is called once per frame
@@ -22,9 +26,12 @@ public class EnemyController : MonoBehaviour
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player"))
+		if (collision.CompareTag("Player") || collision.CompareTag("Bullet"))
 		{
-			Destroy(gameObject) ;
+
+			Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+			gameDirector.GetComponent<GameDirector>().addScore();
+			Destroy(gameObject);
 		}
 	}
 }
